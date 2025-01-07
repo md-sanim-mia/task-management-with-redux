@@ -31,6 +31,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { addTask } from "@/Redux/features/Task/todoSlice";
+import { useAppDispatch } from "@/Redux/hooks";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
@@ -38,8 +40,9 @@ import { FormProvider, useForm } from "react-hook-form";
 
 export function AddTaskModal() {
   const form = useForm();
+  const dispatch = useAppDispatch();
   const onSubmit = (data: any) => {
-    console.log(data);
+    dispatch(addTask(data));
   };
   return (
     <Dialog>
@@ -73,7 +76,7 @@ export function AddTaskModal() {
             />
             <FormField
               control={form.control}
-              name="descoption"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Descoption</FormLabel>
@@ -104,10 +107,10 @@ export function AddTaskModal() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectLabel>pripority</SelectLabel>
-                          <SelectItem value="High">High</SelectItem>
-                          <SelectItem value="Medum">Medum</SelectItem>
-                          <SelectItem value="Low">Low</SelectItem>
+                          <SelectLabel>Pripority</SelectLabel>
+                          <SelectItem value="high">High</SelectItem>
+                          <SelectItem value="medium">Medum</SelectItem>
+                          <SelectItem value="low">Low</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -117,7 +120,7 @@ export function AddTaskModal() {
             />
             <FormField
               control={form.control}
-              name="deuDate"
+              name="dueDate"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Deu Date</FormLabel>

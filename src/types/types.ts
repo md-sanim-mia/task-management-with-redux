@@ -2,7 +2,7 @@ export interface ITask {
   id: string;
   title: string;
   description: string;
-  deuDate: string;
+  dueDate: string;
   isCompleted: Boolean;
-  priority: "High" | "Medium" | "Low";
+  priority: "high" | "medium" | "low";
 }

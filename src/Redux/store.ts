@@ -4,7 +4,7 @@ import taskReducer from "./features/Task/todoSlice";
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    task: taskReducer,
+    todos: taskReducer,
   },
 });
 
